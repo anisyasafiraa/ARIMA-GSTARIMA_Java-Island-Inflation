@@ -69,3 +69,9 @@ for (i in 1:n) {
   }
 }
 round(WKS, 3)
+
+# ---------------------------Spatial Autocorrelation---------------------------
+library(spdep) 
+listWIJ <- mat2listw(WIJ) # using inverse distance matrix
+inflasi <- t(dataOri[180,]) # using last train data before transformation and differencing
+moran.test(inflasi, listWIJ, alternative = "two.sided") 
